@@ -1,0 +1,33 @@
+//  Created by Thomas Clark on 1/31/23.
+//
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int *int_ptr;
+    int_ptr = (int*) malloc(2 * sizeof(int));
+    
+    if (int_ptr == NULL){
+        printf("Memory allocation failed\n");
+        
+        return 1;
+    }
+    
+    printf("Enter the first integer: ");
+    scanf("%d", &int_ptr[0]);
+    
+    printf("Enter the second integer: ");
+    scanf("%d", &int_ptr[1]);
+    
+    printf("Original values: %d, %d\n", int_ptr[0], int_ptr[1]);
+    int_ptr[0] = int_ptr[0] ^ int_ptr[1];
+    int_ptr[1] = int_ptr[0] ^ int_ptr[1];
+    int_ptr[0] = int_ptr[0] ^ int_ptr[1];
+    
+    printf("Swapped values: %d, %d\n", int_ptr[0], int_ptr[1]);
+    
+    free(int_ptr);
+    
+    return 0;
+}
